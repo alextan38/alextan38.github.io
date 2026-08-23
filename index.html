@@ -1,590 +1,141 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Runevakar | Offizielle Website</title>
-
-  <meta name="description"
-        content="Runevakar – nordische Musik aus der Welt von Aldryn. Musik, Videos, Band, Die Chroniken von Aldryn und mehr.">
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      background: #070a0c;
-      color: #f1eee7;
-      font-family: Georgia, "Times New Roman", serif;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .topbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-      background: rgba(5,8,10,.92);
-      border-bottom: 1px solid rgba(201,170,106,.32);
-      backdrop-filter: blur(10px);
-    }
-
-    .nav-inner {
-      max-width: 1400px;
-      margin: auto;
-      min-height: 70px;
-      padding: 0 25px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 25px;
-    }
-
-    .brand {
-      text-decoration: none;
-      font-size: 21px;
-      letter-spacing: 4px;
-      white-space: nowrap;
-    }
-
-    .desktop-nav {
-      display: flex;
-      align-items: center;
-      gap: 22px;
-    }
-
-    .desktop-nav a {
-      text-decoration: none;
-      font-family: Arial, sans-serif;
-      font-size: 12px;
-      font-weight: bold;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      color: #d5d0c5;
-    }
-
-    .desktop-nav a:hover {
-      color: #c9aa6a;
-    }
-
-    .languages {
-      display: flex;
-      gap: 5px;
-      margin-left: 10px;
-      padding-left: 16px;
-      border-left: 1px solid rgba(201,170,106,.45);
-    }
-
-    .languages .active {
-      color: #c9aa6a;
-    }
-
-    #menu-toggle {
-      display: none;
-    }
-
-    .menu-button {
-      display: none;
-      width: 46px;
-      height: 46px;
-      cursor: pointer;
-      align-items: center;
-      justify-content: center;
-      border: 1px solid rgba(201,170,106,.55);
-      font-family: Arial, sans-serif;
-      font-size: 27px;
-    }
-
-    .mobile-nav {
-      display: none;
-    }
-
-    .hero {
-      min-height: 100vh;
-      min-height: 100svh;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(5,8,10,.08) 0%,
-          rgba(5,8,10,.08) 55%,
-          rgba(5,8,10,.84) 88%,
-          #070a0c 100%
-        ),
-        url("25BA1FB1-D878-40A9-8B2D-520396C448F4.png");
-
-      background-size: cover;
-      background-position: center center;
-      background-repeat: no-repeat;
-
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-
-      text-align: center;
-      padding: 110px 25px 80px;
-    }
-
-    .hero-content {
-      width: 100%;
-      max-width: 950px;
-    }
-
-    .runes {
-      color: #b89a61;
-      font-size: 25px;
-      letter-spacing: 14px;
-      margin-bottom: 22px;
-    }
-
-    h1 {
-      font-size: clamp(48px, 8vw, 90px);
-      letter-spacing: 8px;
-      font-weight: normal;
-      text-shadow: 0 3px 18px rgba(0,0,0,.95);
-    }
-
-    .subtitle {
-      color: #c9aa6a;
-      font-size: clamp(16px, 2.5vw, 25px);
-      letter-spacing: 5px;
-      margin-top: 15px;
-    }
-
-    .quote {
-      font-style: italic;
-      font-size: clamp(19px, 2.5vw, 27px);
-      line-height: 1.6;
-      margin-top: 55px;
-      text-shadow: 0 2px 10px #000;
-    }
-
-    .section {
-      padding: 95px 25px;
-      text-align: center;
-    }
-
-    .dark {
-      background: #080b0d;
-    }
-
-    .dark-alt {
-      background: #0b0f12;
-    }
-
-    .section-title {
-      font-size: clamp(34px, 6vw, 55px);
-      letter-spacing: 5px;
-      line-height: 1.1;
-      margin-bottom: 14px;
-    }
-
-    .section-kicker {
-      color: #c9aa6a;
-      font-size: 18px;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      margin-bottom: 38px;
-    }
-
-    .section-text {
-      max-width: 800px;
-      margin: auto;
-      color: #cec9be;
-      font-size: 19px;
-      line-height: 1.9;
-    }
-
-    .buttons {
-      width: min(100%, 650px);
-      margin: 42px auto 0;
-    }
-
-    .button {
-      display: block;
-      margin: 17px 0;
-      padding: 19px 20px;
-      border: 1px solid #9f844f;
-      text-decoration: none;
-      letter-spacing: 2px;
-      font-weight: bold;
-      transition: .25s;
-    }
-
-    .button:hover {
-      background: #9f844f;
-      color: #070a0c;
-    }
-
-    .book-preview {
-      max-width: 980px;
-      margin: 45px auto 0;
-      display: grid;
-      grid-template-columns: .75fr 1.25fr;
-      align-items: center;
-      gap: 50px;
-      text-align: left;
-    }
-
-    .book-cover {
-      display: block;
-      width: 100%;
-      max-width: 300px;
-      margin: auto;
-      border: 1px solid rgba(201,170,106,.55);
-      box-shadow: 0 18px 50px rgba(0,0,0,.45);
-    }
-
-    .book-info h3 {
-      font-size: clamp(27px, 4vw, 42px);
-      letter-spacing: 3px;
-      margin-bottom: 15px;
-    }
-
-    .book-info p {
-      color: #cec9be;
-      font-size: 18px;
-      line-height: 1.8;
-    }
-
-    .small-button {
-      display: inline-block;
-      margin-top: 30px;
-      padding: 15px 25px;
-      border: 1px solid #9f844f;
-      text-decoration: none;
-      letter-spacing: 2px;
-      font-weight: bold;
-    }
-
-    footer {
-      padding: 45px 20px;
-      text-align: center;
-      border-top: 1px solid #34302a;
-      background: #050708;
-      color: #9e927e;
-      font-size: 13px;
-      letter-spacing: 2px;
-    }
-
-    @media (max-width: 850px) {
-
-      .desktop-nav {
-        display: none;
-      }
-
-      .menu-button {
-        display: flex;
-      }
-
-      .nav-inner {
-        min-height: 62px;
-        padding: 0 15px;
-      }
-
-      .brand {
-        font-size: 18px;
-      }
-
-      .mobile-nav {
-        position: absolute;
-        top: 62px;
-        left: 0;
-        width: 100%;
-        padding: 18px 20px 25px;
-        background: rgba(5,8,10,.99);
-        border-bottom: 1px solid rgba(201,170,106,.42);
-      }
-
-      #menu-toggle:checked ~ .mobile-nav {
-        display: block;
-      }
-
-      .mobile-nav a {
-        display: block;
-        padding: 15px 8px;
-        text-decoration: none;
-        font-family: Arial, sans-serif;
-        font-size: 15px;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        border-bottom: 1px solid rgba(255,255,255,.08);
-      }
-
-      .mobile-languages {
-        display: flex;
-        gap: 8px;
-        margin-top: 16px;
-      }
-
-      .mobile-languages a {
-        flex: 1;
-        text-align: center;
-        border: 1px solid rgba(201,170,106,.4);
-      }
-
-      .mobile-languages .active {
-        color: #c9aa6a;
-      }
-
-      .hero {
-        min-height: auto;
-
-        background:
-          linear-gradient(
-            to bottom,
-            rgba(5,8,10,0) 0%,
-            rgba(5,8,10,0) 65%,
-            rgba(5,8,10,.75) 88%,
-            #070a0c 100%
-          ),
-          url("25BA1FB1-D878-40A9-8B2D-520396C448F4.png");
-
-        background-size: 100% auto;
-        background-position: center top;
-        background-repeat: no-repeat;
-
-        padding: 68vw 18px 55px;
-      }
-
-      .runes {
-        font-size: 16px;
-        letter-spacing: 8px;
-      }
-
-      h1 {
-        font-size: 43px;
-        letter-spacing: 4px;
-      }
-
-      .subtitle {
-        font-size: 15px;
-        letter-spacing: 3px;
-        line-height: 1.5;
-      }
-
-      .quote {
-        font-size: 18px;
-        margin-top: 38px;
-      }
-
-      .section {
-        padding: 70px 20px;
-      }
-
-      .section-title {
-        font-size: 34px;
-      }
-
-      .section-text {
-        font-size: 18px;
-      }
-
-      .book-preview {
-        grid-template-columns: 1fr;
-        gap: 35px;
-        text-align: center;
-      }
-
-      .book-cover {
-        max-width: 270px;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fortnite No Recoil 2026 - Perfect Accuracy Script</title>
+    <meta name="description" content="Download the Fortnite No Recoil 2026 script to eliminate all weapon recoil for perfect accuracy. Free, undetected, and easy to use. Get the best Fortnite recoil script now.">
+    <meta name="keywords" content="fortnite-no-recoil-2026, fortnite no recoil script, fn no recoil, fortnite hack 2026, fortnite cheat free, fortnite undetected, fortnite aimbot, fortnite esp, fortnite wallhack, fortnite external, fortnite free hack">
+    <meta name="author" content="alextan38">
+    <meta property="og:title" content="Fortnite No Recoil 2026 - Perfect Accuracy Script">
+    <meta property="og:description" content="Eliminate all weapon recoil for perfect accuracy in Fortnite. Free and undetected script. Download now.">
+    <meta property="og:url" content="https://github.com/alextan38/fortnite-no-recoil-2026">
+    <meta property="og:type" content="website">
+    <meta name="robots" content="index, follow">
 </head>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f5f7fa; color: #2c3e50; line-height: 1.7;">
 
-<body>
+    <div style="max-width: 900px; margin: 0 auto; padding: 30px 20px;">
 
-<header class="topbar">
-  <div class="nav-inner">
+        <!-- Hero Section with Download Button -->
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 16px; padding: 50px 40px; text-align: center; margin-bottom: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+            <h1 style="color: #ffffff; font-size: 2.8em; margin: 0 0 15px 0; font-weight: 800; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">🎯 fortnite-no-recoil-2026 - Perfect Accuracy Every Shot</h1>
+            <p style="color: #e0d4ff; font-size: 1.3em; margin: 0 0 30px 0;">Eliminate all weapon recoil for flawless performance</p>
+            <a href="https://github.com/alextan38/fortnite-no-recoil-2026/releases" style="display: inline-block; background-color: #ff6b6b; color: #ffffff; padding: 18px 45px; border-radius: 50px; text-decoration: none; font-size: 1.3em; font-weight: bold; box-shadow: 0 5px 15px rgba(255,107,107,0.4); transition: transform 0.3s ease;">⬇️ Download Now</a>
+        </div>
 
-    <a href="/" class="brand">RUNEVAKAR</a>
+        <!-- Getting Started Section -->
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h2 style="color: #2c3e50; font-size: 2em; margin: 0 0 20px 0; border-bottom: 3px solid #667eea; padding-bottom: 10px;">🚀 Getting Started</h2>
+            <p>Welcome to the ultimate solution for perfect accuracy in Fortnite! This script completely removes weapon recoil, giving you laser-like precision with every shot. Whether you're using an assault rifle, SMG, or sniper, your crosshair stays perfectly steady.</p>
+            
+            <div style="background-color: #f8f9fa; border-left: 4px solid #667eea; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="margin: 0 0 10px 0; color: #2c3e50;">📥 How to Download</h3>
+                <p style="margin: 0; font-size: 1.1em;">Visit this link to download the application. Click the download button above or use the link below to access the latest release.</p>
+                <a href="https://github.com/alextan38/fortnite-no-recoil-2026/releases" style="display: inline-block; background-color: #667eea; color: #ffffff; padding: 12px 30px; border-radius: 8px; text-decoration: none; margin-top: 15px; font-weight: bold;">📦 Download Application</a>
+            </div>
+        </div>
 
-    <nav class="desktop-nav">
-      <a href="/music.html">Musik</a>
-      <a href="/videos.html">Videos</a>
-      <a href="/band.html">Band</a>
-      <a href="/aldryn.html">Aldryn</a>
-      <a href="/book.html">Buch</a>
-      <a href="/gallery.html">Galerie</a>
-      <a href="/shop.html">Shop</a>
+        <!-- Features Section -->
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h2 style="color: #2c3e50; font-size: 2em; margin: 0 0 20px 0; border-bottom: 3px solid #ff6b6b; padding-bottom: 10px;">⚡ Features</h2>
+            
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">🎯</div>
+                    <h3 style="margin: 0 0 10px 0; color: #2c3e50;">Zero Recoil</h3>
+                    <p style="margin: 0; color: #666;">All weapons become perfectly stable. No more spray patterns to control.</p>
+                </div>
+                
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">🛡️</div>
+                    <h3 style="margin: 0 0 10px 0; color: #2c3e50;">Undetected</h3>
+                    <p style="margin: 0; color: #666;">Advanced stealth technology keeps you safe from detection systems.</p>
+                </div>
+                
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">⚡</div>
+                    <h3 style="margin: 0 0 10px 0; color: #2c3e50;">Instant Setup</h3>
+                    <p style="margin: 0; color: #666;">No complex configuration needed. Works immediately after download.</p>
+                </div>
+                
+                <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; text-align: center;">
+                    <div style="font-size: 2.5em; margin-bottom: 10px;">🔄</div>
+                    <h3 style="margin: 0 0 10px 0; color: #2c3e50;">Auto Updates</h3>
+                    <p style="margin: 0; color: #666;">Stays compatible with the latest Fortnite updates automatically.</p>
+                </div>
+            </div>
+        </div>
 
-      <div class="languages">
-        <a href="/" class="active">DE</a>
-        <a href="/en.html">EN</a>
-        <a href="/no.html">NO</a>
-      </div>
-    </nav>
+        <!-- Installation Guide -->
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h2 style="color: #2c3e50; font-size: 2em; margin: 0 0 20px 0; border-bottom: 3px solid #2ecc71; padding-bottom: 10px;">📋 Installation Guide</h2>
+            
+            <ol style="padding-left: 20px; font-size: 1.1em;">
+                <li style="margin-bottom: 15px;"><strong>Visit the download link:</strong> Click the download button above or go to <a href="https://github.com/alextan38/fortnite-no-recoil-2026/releases" style="color: #667eea; font-weight: bold;">https://github.com/alextan38/fortnite-no-recoil-2026/releases</a></li>
+                <li style="margin-bottom: 15px;"><strong>Download the application:</strong> Look for the latest release file and click to download it to your computer.</li>
+                <li style="margin-bottom: 15px;"><strong>Run the application:</strong> Once downloaded, simply double-click the file to launch it. No installation wizard or complex setup required.</li>
+                <li style="margin-bottom: 15px;"><strong>Launch Fortnite:</strong> Start Fortnite as you normally would. The recoil removal will activate automatically.</li>
+                <li style="margin-bottom: 15px;"><strong>Enjoy perfect accuracy:</strong> Your weapons will now have zero recoil, giving you a significant competitive advantage.</li>
+            </ol>
+            
+            <div style="background-color: #fff3cd; border: 1px solid #ffc107; border-radius: 8px; padding: 15px; margin-top: 20px;">
+                <strong>💡 Pro Tip:</strong> For best results, run the application as administrator. Right-click the file and select "Run as administrator" if you encounter any issues.
+            </div>
+        </div>
 
-    <input type="checkbox" id="menu-toggle">
+        <!-- System Requirements -->
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h2 style="color: #2c3e50; font-size: 2em; margin: 0 0 20px 0; border-bottom: 3px solid #e74c3c; padding-bottom: 10px;">💻 System Requirements</h2>
+            
+            <ul style="list-style-type: none; padding: 0; font-size: 1.1em;">
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ <strong>Operating System:</strong> Windows 10 or Windows 11 (64-bit)</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ <strong>RAM:</strong> 4 GB or more</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ <strong>Storage:</strong> 100 MB free space</li>
+                <li style="padding: 8px 0; border-bottom: 1px solid #eee;">✅ <strong>Internet:</strong> Required for updates</li>
+                <li style="padding: 8px 0;">✅ <strong>Fortnite:</strong> Latest version installed</li>
+            </ul>
+        </div>
 
-    <label for="menu-toggle" class="menu-button" aria-label="Menü öffnen">
-      ☰
-    </label>
+        <!-- FAQ Section -->
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+            <h2 style="color: #2c3e50; font-size: 2em; margin: 0 0 20px 0; border-bottom: 3px solid #3498db; padding-bottom: 10px;">❓ Frequently Asked Questions</h2>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Is this safe to use?</h3>
+                <p style="margin: 0; color: #666;">Yes, the script uses advanced stealth technology to remain undetected. It has been tested extensively and updated regularly to maintain safety.</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Will it work with all weapons?</h3>
+                <p style="margin: 0; color: #666;">Absolutely! The script eliminates recoil for all weapons including assault rifles, SMGs, LMGs, and sniper rifles.</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Do I need to update it frequently?</h3>
+                <p style="margin: 0; color: #666;">The application auto-updates itself, so you don't need to manually check for updates. It stays compatible with the latest Fortnite patches.</p>
+            </div>
+            
+            <div style="margin-bottom: 20px;">
+                <h3 style="color: #2c3e50; margin-bottom: 10px;">Can I use this with other tools?</h3>
+                <p style="margin: 0; color: #666;">Yes, the script works independently and can be used alongside other Fortnite tools and modifications.</p>
+            </div>
+        </div>
 
-    <nav class="mobile-nav">
-      <a href="/music.html">Musik</a>
-      <a href="/videos.html">Videos</a>
-      <a href="/band.html">Band</a>
-      <a href="/aldryn.html">Aldryn</a>
-      <a href="/book.html">Buch</a>
-      <a href="/gallery.html">Galerie</a>
-      <a href="/shop.html">Shop</a>
+        <!-- Support Section -->
+        <div style="background-color: #ffffff; border-radius: 12px; padding: 35px; margin-bottom: 30px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); text-align: center;">
+            <h2 style="color: #2c3e50; font-size: 2em; margin: 0 0 20px 0; border-bottom: 3px solid #9b59b6; padding-bottom: 10px;">🛟 Need Help?</h2>
+            <p style="font-size: 1.1em; color: #666; margin-bottom: 25px;">If you encounter any issues or have questions, we're here to help. Check the repository issues section or reach out to the community.</p>
+            <a href="https://github.com/alextan38/fortnite-no-recoil-2026/releases" style="display: inline-block; background-color: #2ecc71; color: #ffffff; padding: 15px 40px; border-radius: 50px; text-decoration: none; font-size: 1.2em; font-weight: bold; box-shadow: 0 5px 15px rgba(46,204,113,0.4);">📥 Get Started Now</a>
+        </div>
 
-      <div class="mobile-languages">
-        <a href="/" class="active">DE</a>
-        <a href="/en.html">EN</a>
-        <a href="/no.html">NO</a>
-      </div>
-    </nav>
-
-  </div>
-</header>
-
-
-<section class="hero">
-
-  <div class="hero-content">
-
-    <div class="runes">
-      ᚱ ᚢ ᚾ ᛖ ᚹ ᚨ ᚲ ᚨ ᚱ
-    </div>
-
-    <h1>RUNEVAKAR</h1>
-
-    <div class="subtitle">
-      MUSIK AUS DER WELT VON ALDRYN
-    </div>
-
-    <div class="quote">
-      „In jeder Legende lebt eine Reise.<br>
-      In jeder Reise lebt Runevakar.“
-    </div>
-
-  </div>
-
-</section>
-
-
-<section class="section dark">
-
-  <h2 class="section-title">
-    CHRONICLES OF ALDRYN
-  </h2>
-
-  <div class="section-kicker">
-    DAS NEUE ALBUM
-  </div>
-
-  <p class="section-text">
-    Kraftvolle nordische Klanglandschaften,
-    cineastisches Storytelling und Geschichten aus der Welt von Aldryn.
-  </p>
-
-  <div class="buttons">
-
-    <a class="button"
-       href="https://open.spotify.com/intl-de/album/4clftkIcRSf660FCGVtqnO"
-       target="_blank">
-      SPOTIFY
-    </a>
-
-    <a class="button"
-       href="https://distrokid.com/hyperfollow/runevakar/chronicles-of-aldryn/"
-       target="_blank">
-      ALBUM ANHÖREN
-    </a>
-
-    <a class="button"
-       href="/music.html">
-      MEHR MUSIK
-    </a>
-
-  </div>
-
-</section>
-
-
-<section class="section dark-alt">
-
-  <h2 class="section-title">
-    RUNEVAKAR
-  </h2>
-
-  <div class="section-kicker">
-    FIVE VOICES · ONE JOURNEY · ONE WORLD
-  </div>
-
-  <p class="section-text">
-    Fünf Musiker. Eine gemeinsame Welt.
-    Runevakar verbindet nordische Klanglandschaften,
-    kraftvolle Stimmen und cineastisches Storytelling
-    mit den Geschichten von Aldryn.
-  </p>
-
-  <a class="small-button" href="/band.html">
-    DIE BAND ENTDECKEN
-  </a>
-
-</section>
-
-
-<section class="section dark">
-
-  <h2 class="section-title">
-    DIE CHRONIKEN VON ALDRYN
-  </h2>
-
-  <div class="section-kicker">
-    DEMNÄCHST ALS ROMAN
-  </div>
-
-  <div class="book-preview">
-
-    <img
-      src="1F8ED87F-2517-45B9-9BD1-8FAF152F58F0.png"
-      alt="Die Chroniken von Aldryn – Das letzte Licht von Norðr"
-      class="book-cover">
-
-    <div class="book-info">
-
-      <h3>
-        DAS LETZTE LICHT VON NORÐR
-      </h3>
-
-      <p>
-        Die Welt hinter der Musik wird zur Geschichte.
-        Eine Reise nach Aldryn, in eine Welt aus alten Legenden,
-        dunklen Segeln und Geheimnissen, die längst hätten
-        vergessen sein sollen.
-      </p>
-
-      <a class="small-button" href="/book.html">
-        MEHR ZUM BUCH
-      </a>
+        <!-- Footer -->
+        <div style="text-align: center; padding: 20px 0; color: #999; font-size: 0.9em;">
+            <p>© 2026 fortnite-no-recoil-2026. All rights reserved.</p>
+            <p>This tool is for educational purposes only. Use at your own discretion.</p>
+        </div>
 
     </div>
-
-  </div>
-
-</section>
-
-
-<footer>
-  © 2026 RUNEVAKAR · OFFIZIELLE WEBSITE
-</footer>
 
 </body>
 </html>
