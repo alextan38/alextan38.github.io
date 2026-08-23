@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Runevakar | Official Website</title>
+
+  <meta name="description"
+        content="Runevakar – Nordic music from the world of Aldryn. Listen to Chronicles of Aldryn.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #070a0c;
+      color: #f1eee7;
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    .hero {
+      min-height: 100vh;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+
+      background:
+        linear-gradient(
+          to bottom,
+          rgba(4,8,10,.28) 0%,
+          rgba(4,8,10,.40) 45%,
+          rgba(4,8,10,.88) 100%
+        ),
+        url("25BA1FB1-D878-40A9-8B2D-520396C448F4.png");
+
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
+
+    .hero-content {
+      width: 100%;
+      max-width: 1100px;
+      padding-top: 45vh;
+    }
+
+    .rune {
+      font-size: 24px;
+      letter-spacing: 10px;
+      color: #c5ad78;
+      margin-bottom: 18px;
+      text-shadow: 0 2px 12px rgba(0,0,0,.9);
+    }
+
+    h1 {
+      font-size: clamp(48px, 11vw, 110px);
+      letter-spacing: 8px;
+      font-weight: 500;
+      text-transform: uppercase;
+      text-shadow:
+        0 3px 8px rgba(0,0,0,.95),
+        0 0 28px rgba(0,0,0,.8);
+    }
+
+    .subtitle {
+      margin-top: 10px;
+      font-size: clamp(15px, 4vw, 22px);
+      letter-spacing: 4px;
+      color: #d0b77e;
+      text-transform: uppercase;
+      text-shadow: 0 2px 10px rgba(0,0,0,.9);
+    }
+
+    .quote {
+      margin: 35px auto 0;
+      max-width: 700px;
+      font-size: clamp(17px, 4vw, 24px);
+      line-height: 1.6;
+      font-style: italic;
+      color: #eee9dd;
+      text-shadow: 0 2px 10px rgba(0,0,0,.95);
+    }
+
+    .section {
+      padding: 95px 20px;
+      text-align: center;
+    }
+
+    .album {
+      background:
+        radial-gradient(circle at top, #12191d 0%, #080b0d 70%);
+      border-top: 1px solid rgba(197,173,120,.25);
+    }
+
+    .album h2,
+    .about h2,
+    .aldryn h2,
+    .follow h2 {
+      font-size: clamp(32px, 7vw, 56px);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .kicker {
+      color: #c5ad78;
+      font-size: 18px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 45px;
+    }
+
+    .album-text,
+    .about p,
+    .aldryn p {
+      max-width: 850px;
+      margin: 0 auto;
+      font-size: 18px;
+      line-height: 1.9;
+      color: #cec9be;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      max-width: 900px;
+      margin: 45px auto 0;
+    }
+
+    .buttons a {
+      display: inline-block;
+      min-width: 210px;
+      padding: 16px 24px;
+      color: #f4f0e8;
+      text-decoration: none;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      border: 1px solid #8f825f;
+      background: rgba(18,24,28,.86);
+      transition: .25s;
+    }
+
+    .buttons a:hover {
+      background: #c5ad78;
+      color: #080b0d;
+    }
+
+    .about {
+      background: #090c0e;
+    }
+
+    .aldryn {
+      background:
+        linear-gradient(rgba(5,8,10,.88), rgba(5,8,10,.88)),
+        radial-gradient(circle at center, #1a2429 0%, #070a0c 75%);
+      border-top: 1px solid rgba(197,173,120,.18);
+      border-bottom: 1px solid rgba(197,173,120,.18);
+    }
+
+    .follow {
+      background: #070a0c;
+    }
+
+    .social {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 40px;
+    }
+
+    .social a {
+      color: #f4f0e8;
+      text-decoration: none;
+      border-bottom: 1px solid #8f825f;
+      padding: 8px 4px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-size: 14px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      border-top: 1px solid rgba(197,173,120,.18);
+      color: #837c6d;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      letter-spacing: 1px;
+      background: #050708;
+    }
+
+    @media (max-width: 700px) {
+      .hero {
+        min-height: 100svh;
+        background-position: center top;
+      }
+
+      .hero-content {
+        padding-top: 52vh;
+      }
+
+      h1 {
+        letter-spacing: 4px;
+      }
+
+      .rune {
+        font-size: 18px;
+        letter-spacing: 6px;
+      }
+
+      .subtitle {
+        letter-spacing: 2px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+
+      .buttons a {
+        width: 100%;
+      }
+
+      .section {
+        padding: 75px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <section class="hero">
+    <div class="hero-content">
+
+      <div class="rune">
+        ᚱ ᚢ ᚾ ᛖ ᚡ ᚨ ᚲ ᚨ ᚱ
+      </div>
+
+      <h1>Runevakar</h1>
+
+      <div class="subtitle">
+        Music from the World of Aldryn
+      </div>
+
+      <div class="quote">
+        “In every legend lives a journey.<br>
+        In every journey lives Runevakar.”
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section album">
+
+    <h2>Chronicles of Aldryn</h2>
+
+    <div class="kicker">
+      The New Album
+    </div>
+
+    <p class="album-text">
+      Enter the world of Aldryn through music shaped by northern landscapes,
+      ancient stories, loyalty, loss, hope and the roads that bind them all.
+    </p>
+
+    <div class="buttons">
+
+      <a href="https://open.spotify.com/intl-de/album/4clftkIcRSf660FCGVtqnO"
+         target="_blank">
+        Spotify
+      </a>
+
+      <a href="https://music.apple.com/de/album/chronicles-of-aldryn/6795321758"
+         target="_blank">
+        Apple Music
+      </a>
+
+      <a href="https://music.amazon.de/albums/B0HBT8R8VP"
+         target="_blank">
+        Amazon Music
+      </a>
+
+      <a href="https://distrokid.com/hyperfollow/runevakar/chronicles-of-aldryn/"
+         target="_blank">
+        All Platforms
+      </a>
+
+    </div>
+
+  </section>
+
+
+  <section class="section about">
+
+    <h2>Runevakar</h2>
+
+    <div class="kicker">
+      Five Voices · One Journey · One World
+    </div>
+
+    <p>
+      Runevakar combines powerful Nordic soundscapes, cinematic storytelling
+      and songs about journeys, loyalty, loss and hope.
+      Five musicians, one shared world and stories born from Aldryn.
+    </p>
+
+  </section>
+
+
+  <section class="section aldryn">
+
+    <h2>Enter Aldryn</h2>
+
+    <div class="kicker">
+      Beyond the Music
+    </div>
+
+    <p>
+      Aldryn is more than a setting. It is the world behind Runevakar:
+      a place of northern seas, ancient roads, forgotten stories and
+      journeys shaped by those who refuse to turn back.
+    </p>
+
+  </section>
+
+
+  <section class="section follow">
+
+    <h2>Follow Runevakar</h2>
+
+    <div class="kicker">
+      Stay on the Journey
+    </div>
+
+    <div class="social">
+      <a href="#" target="_blank">YouTube</a>
+      <a href="#" target="_blank">Instagram</a>
+      <a href="#" target="_blank">Facebook</a>
+    </div>
+
+  </section>
+
+
+  <footer>
+    © 2026 RUNEVAKAR · OFFICIAL WEBSITE
+  </footer>
+
+</body>
+</html>
