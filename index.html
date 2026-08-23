@@ -7,7 +7,7 @@
   <title>Runevakar | Offizielle Website</title>
 
   <meta name="description"
-        content="Runevakar – nordische Musik aus der Welt von Aldryn. Entdecke Chronicles of Aldryn und die Welt hinter der Musik.">
+        content="Runevakar – nordische Musik aus der Welt von Aldryn. Entdecke Chronicles of Aldryn und das neue Musikvideo Legends Never Sleep.">
 
   <link rel="alternate" hreflang="de" href="https://runevakar.de/">
   <link rel="alternate" hreflang="en" href="https://runevakar.de/en.html">
@@ -15,6 +15,7 @@
   <link rel="alternate" hreflang="x-default" href="https://runevakar.de/">
 
   <style>
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -30,6 +31,8 @@
       color: #f1eee7;
       font-family: Georgia, "Times New Roman", serif;
     }
+
+    /* HERO */
 
     .hero {
       min-height: 100vh;
@@ -57,6 +60,8 @@
       text-align: center;
       padding: 60px 25px 80px;
     }
+
+    /* SPRACHEN */
 
     .language-switcher {
       position: absolute;
@@ -127,6 +132,8 @@
       text-shadow: 0 2px 10px #000;
     }
 
+    /* ALBUM */
+
     .album {
       text-align: center;
       padding: 100px 20px;
@@ -177,6 +184,75 @@
       color: #070a0c;
     }
 
+    /* VIDEO */
+
+    .video-section {
+      padding: 100px 20px;
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at center,
+          #141b1f 0%,
+          #090d0f 65%,
+          #070a0c 100%
+        );
+
+      border-top: 1px solid #34302a;
+      border-bottom: 1px solid #34302a;
+    }
+
+    .video-section h2 {
+      font-size: clamp(34px, 6vw, 55px);
+      letter-spacing: 5px;
+      margin-bottom: 12px;
+    }
+
+    .video-title {
+      color: #c9aa6a;
+      font-size: 19px;
+      letter-spacing: 3px;
+      margin-bottom: 45px;
+    }
+
+    .video-wrapper {
+      width: min(100%, 1000px);
+      margin: 0 auto;
+      aspect-ratio: 16 / 9;
+
+      border: 1px solid #9f844f;
+      box-shadow: 0 15px 50px rgba(0,0,0,.55);
+      background: #000;
+    }
+
+    .video-wrapper iframe {
+      width: 100%;
+      height: 100%;
+      display: block;
+      border: 0;
+    }
+
+    .youtube-button {
+      display: inline-block;
+      margin-top: 35px;
+      padding: 16px 30px;
+
+      border: 1px solid #9f844f;
+
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 2px;
+      font-weight: bold;
+
+      transition: .25s;
+    }
+
+    .youtube-button:hover {
+      background: #9f844f;
+      color: #070a0c;
+    }
+
+    /* RUNEVAKAR / ALDRYN */
+
     .about,
     .aldryn {
       padding: 100px 25px;
@@ -208,6 +284,8 @@
       color: #cec9be;
     }
 
+    /* FOOTER */
+
     footer {
       text-align: center;
       padding: 45px 20px;
@@ -217,6 +295,8 @@
       font-size: 13px;
       background: #050708;
     }
+
+    /* HANDY */
 
     @media (max-width: 700px) {
 
@@ -277,17 +357,20 @@
       }
 
       .album,
+      .video-section,
       .about,
       .aldryn {
         padding: 75px 20px;
       }
 
-      .album h2 {
+      .album h2,
+      .video-section h2 {
         font-size: 34px;
       }
 
-      .album-subtitle {
-        font-size: 17px;
+      .album-subtitle,
+      .video-title {
+        font-size: 16px;
       }
 
       .album-text,
@@ -296,11 +379,21 @@
         font-size: 18px;
         line-height: 1.8;
       }
+
+      .video-wrapper {
+        width: 100%;
+      }
+
+      .youtube-button {
+        width: 100%;
+      }
     }
+
   </style>
 </head>
 
 <body>
+
 
 <section class="hero">
 
@@ -376,6 +469,35 @@
     </a>
 
   </div>
+
+</section>
+
+
+<section class="video-section">
+
+  <h2>DAS NEUE MUSIKVIDEO</h2>
+
+  <div class="video-title">
+    RUNEVAKAR · LEGENDS NEVER SLEEP
+  </div>
+
+  <div class="video-wrapper">
+
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/waYs0XfP2HY"
+      title="Runevakar – Legends Never Sleep"
+      loading="lazy"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+  <a class="youtube-button"
+     href="https://youtu.be/waYs0XfP2HY"
+     target="_blank">
+    AUF YOUTUBE ANSEHEN
+  </a>
 
 </section>
 
